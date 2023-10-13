@@ -1,13 +1,8 @@
 name: Build and deploy Aseprite
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
-  push:
-    branches:
-      - master
-    tags:
-      - "v*"
+  - push
+  - pull_request
 
 env:
   BUILD_TYPE: Release
