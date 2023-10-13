@@ -43,11 +43,8 @@ jobs:
         release_name: Release Aseprite ${{ steps.version_info.outputs.latest_tag }}
         body: |
           ${{ steps.version_info.outputs.version_info }}
-        draft: true
+        draft: false
         prerelease: false
-    - name: Set upload_url output
-      if: steps.should_build.outputs.should_build
-      run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
   build:
     runs-on: ${{ matrix.os }}
     needs: check-version
