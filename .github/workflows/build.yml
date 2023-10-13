@@ -8,7 +8,7 @@ jobs:
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
         build_type: [RelWithDebInfo, Debug,Release]
-        enable_ui: [off]
+        enable_ui: [on]
         include:
           - os: ubuntu-latest
             build_type: Debug
