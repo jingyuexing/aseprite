@@ -116,7 +116,7 @@ jobs:
         if [[ "${{ runner.os }}" == "Linux" ]] ; then
           export XVFB=xvfb-run
         fi
-        export ASEPRITE=$PWD/bin/aseprite
+        export ASEPRITE=$PWD/build/bin/aseprite
         cd tests
         $XVFB bash run-tests.sh
     - name: Upload release
@@ -125,6 +125,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKENS }}
       with:
         upload_url: ${{ needs.check-version.outputs.upload_url }}
-        asset_path: bin/Aseprite-${{ needs.check-version.outputs.latest_tag }}-${{ runner.os }}.zip
+        asset_path: aseprite/build/bin/Aseprite-${{ needs.check-version.outputs.latest_tag }}-${{ runner.os }}.zip
         asset_name: Aseprite-${{ needs.check-version.outputs.latest_tag }}-${{ runner.os }}.zip
         asset_content_type: application/zip
