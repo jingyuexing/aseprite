@@ -1,5 +1,10 @@
 name: build
-on: [push, pull_request]
+on: 
+  - push
+  - pull_request
+  label:
+    types:
+      - created
 jobs:
   check-version:
     name: Check latest Aseprite release
@@ -22,6 +27,8 @@ jobs:
         echo "::set-output name=latest_tag::${LATEST_TAG}"
         echo "::set-output name=download_url::${DOWNLOAD_URL}"
         echo "::set-output name=version_info::${VERSION_INFO}"
+    - id: step_upload_url
+      run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
     - name: Load version from cache
       id: version_check
       uses: actions/cache@v2
